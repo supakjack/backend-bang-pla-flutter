@@ -11,10 +11,11 @@ var bodyParser = require('body-parser');
 // include route
 var indexRouter = require('./routes/indexRouter');
 var boqRouter = require('./routes/boqRouter');
-var app = express();
+var cptRouter = require('./routes/cptRouter');
 // include route
 
 // config setting
+var app = express();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,6 +29,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // route
 app.use('/', indexRouter);
 app.use('/boq', boqRouter);
+app.use('/cpt', cptRouter);
 // route
+
+console.log('app launch at : ' + process.env.PORT);
 
 module.exports = app;
